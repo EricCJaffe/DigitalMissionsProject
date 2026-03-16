@@ -33,22 +33,24 @@ export function SiteHeader() {
                       {"items" in item ? <span className="text-xs">▾</span> : null}
                     </Link>
                     {"items" in item ? (
-                      <div className="pointer-events-none absolute left-1/2 top-full z-30 mt-3 hidden w-[340px] -translate-x-1/2 rounded-[24px] border border-[var(--line)] bg-white/98 p-3 opacity-0 shadow-[0_28px_80px_rgba(17,43,103,0.18)] transition duration-200 group-hover:pointer-events-auto group-hover:block group-hover:opacity-100">
-                        <div className="grid gap-2">
-                          {item.items.map((subItem) => (
-                            <Link
-                              key={subItem.href}
-                              href={subItem.href}
-                              className="rounded-[18px] px-4 py-3 transition hover:bg-[var(--panel)]"
-                            >
-                              <p className="font-semibold text-[var(--navy)]">
-                                {subItem.label}
-                              </p>
-                              <p className="mt-1 text-sm leading-6 text-[var(--muted)]">
-                                {subItem.description}
-                              </p>
-                            </Link>
-                          ))}
+                      <div className="pointer-events-none invisible absolute left-1/2 top-full z-30 w-[340px] -translate-x-1/2 translate-y-2 pt-3 opacity-0 transition duration-200 group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                        <div className="rounded-[24px] border border-[var(--line)] bg-white/98 p-3 shadow-[0_28px_80px_rgba(17,43,103,0.18)]">
+                          <div className="grid gap-2">
+                            {item.items.map((subItem) => (
+                              <Link
+                                key={subItem.href}
+                                href={subItem.href}
+                                className="rounded-[18px] px-4 py-3 transition hover:bg-[var(--panel)]"
+                              >
+                                <p className="font-semibold text-[var(--navy)]">
+                                  {subItem.label}
+                                </p>
+                                <p className="mt-1 text-sm leading-6 text-[var(--muted)]">
+                                  {subItem.description}
+                                </p>
+                              </Link>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     ) : null}
