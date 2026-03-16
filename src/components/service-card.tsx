@@ -30,7 +30,7 @@ export function ServiceCard({ service }: { service: Service }) {
   const copyClass = isDark ? "text-white/82" : "text-[var(--muted)]";
 
   return (
-    <article className={`rounded-[30px] border p-8 ${cardClass}`}>
+    <article className={`flex h-full flex-col rounded-[30px] border p-8 ${cardClass}`}>
       <div className={`flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-[22px] ${iconClass}`}>
         <ServiceIcon slug={service.slug} />
       </div>
@@ -53,7 +53,8 @@ export function ServiceCard({ service }: { service: Service }) {
       </ul>
       <Link
         href={`/services/${service.slug}`}
-        className={`mt-10 inline-flex h-14 w-full items-center justify-center rounded-2xl text-lg font-semibold transition hover:-translate-y-0.5 ${buttonClass}`}
+        className={`mt-auto inline-flex h-14 w-full items-center justify-center rounded-2xl text-lg font-semibold transition hover:-translate-y-0.5 ${buttonClass}`}
+        style={{ marginTop: "2.5rem" }}
       >
         Explore {service.shortName}
       </Link>
