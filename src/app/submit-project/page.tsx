@@ -215,17 +215,37 @@ export default async function SubmitProjectPage({
                 {projectTypes.map((type) => (
                   <label
                     key={type}
-                    className="rounded-[24px] border border-[var(--line)] bg-[#f9fbff] p-8 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.65)] transition hover:-translate-y-0.5 hover:border-[rgba(46,98,230,0.28)] hover:bg-white"
+                    className="cursor-pointer"
                   >
                     <input
                       type="radio"
                       name="project_type"
                       value={type}
                       required
-                      className="sr-only"
+                      className="peer sr-only"
                     />
-                    <div className="text-2xl font-semibold text-[var(--muted)]">
-                      {type}
+                    <div className="rounded-[24px] border border-[var(--line)] bg-[#f9fbff] p-8 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.65)] transition hover:-translate-y-0.5 hover:border-[rgba(46,98,230,0.28)] hover:bg-white peer-checked:border-[var(--blue)] peer-checked:bg-[linear-gradient(180deg,_rgba(46,98,230,0.12),_rgba(255,255,255,0.98))] peer-checked:shadow-[0_16px_34px_rgba(46,98,230,0.16)]">
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="text-2xl font-semibold text-[var(--muted)] transition peer-checked:text-[var(--navy)]">
+                          {type}
+                        </div>
+                        <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[rgba(46,98,230,0.24)] bg-white transition peer-checked:border-[var(--blue)] peer-checked:bg-[var(--blue)]">
+                          <svg
+                            viewBox="0 0 20 20"
+                            aria-hidden="true"
+                            className="h-4 w-4 text-white opacity-0 transition peer-checked:opacity-100"
+                          >
+                            <path
+                              d="m5 10 3 3 7-7"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2.2"
+                            />
+                          </svg>
+                        </div>
+                      </div>
                     </div>
                   </label>
                 ))}
