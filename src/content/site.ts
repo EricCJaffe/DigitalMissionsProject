@@ -164,10 +164,6 @@ export const navigation = [
     href: "/our-process",
   },
   {
-    label: "Results",
-    href: "/results",
-  },
-  {
     label: "Resources",
     href: "/grant",
     items: [
@@ -175,6 +171,11 @@ export const navigation = [
         label: "Grant Support",
         href: "/grant",
         description: "Guidance for grants, outreach funding, and digital growth support.",
+      },
+      {
+        label: "Submit Project",
+        href: "/submit-project",
+        description: "Share your project idea and let us know what kind of support you need.",
       },
       {
         label: "Donate",
@@ -214,12 +215,6 @@ export const processSteps = [
     description:
       "We train and document what matters so your staff can use the systems confidently after launch.",
   },
-];
-
-export const resultHighlights = [
-  "Cleaner outreach systems for organizations serving their communities",
-  "Web and automation projects designed around stewardship, not bloat",
-  "A practical partner for churches, nonprofits, and faith-based organizations",
 ];
 
 export const donateContent = {

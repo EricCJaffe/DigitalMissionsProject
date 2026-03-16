@@ -54,6 +54,12 @@ export function SiteFooter() {
             <Link href="/grant" className="text-white/84 transition hover:text-white">
               Grant Support
             </Link>
+            <Link
+              href="/submit-project"
+              className="text-white/84 transition hover:text-white"
+            >
+              Submit Project
+            </Link>
             <Link href="/donate" className="text-white/84 transition hover:text-white">
               Donate
             </Link>

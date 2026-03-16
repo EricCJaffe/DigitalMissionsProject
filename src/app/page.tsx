@@ -1,12 +1,7 @@
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { ServiceCard } from "@/components/service-card";
-import {
-  industries,
-  processSteps,
-  resultHighlights,
-  services,
-} from "@/content/site";
+import { industries, processSteps, services } from "@/content/site";
 
 export default function Home() {
   return (
@@ -27,9 +22,9 @@ export default function Home() {
               Ministry-minded, nonprofit-aware, and careful with budget.
             </h2>
             <p className="mt-5 text-lg leading-8 text-[var(--muted)]">
-              We are not trying to turn churches and nonprofits into generic
-              brands. We help them remove friction, communicate more clearly,
-              and use digital tools in ways that strengthen the mission.
+              We focus on helping organizations achieve their vision and serve
+              their communities without gimmicks, unnecessary cost, or
+              overcomplicated tools.
             </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               {[
@@ -49,28 +44,27 @@ export default function Home() {
 
           <div className="rounded-[30px] border border-[var(--line)] bg-[linear-gradient(160deg,_rgba(30,61,129,0.98),_rgba(45,88,181,0.95))] p-8 text-white shadow-[0_25px_60px_rgba(15,45,105,0.28)]">
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-white/65">
-              Original positioning restored
+              Grants and project requests
             </p>
             <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em]">
-              Less agency-speak. More partnership, stewardship, and outreach.
+              Applying for a grant or submitting a project?
             </h2>
             <p className="mt-5 text-lg leading-8 text-white/82">
-              The updated language keeps the focus on helping organizations
-              achieve their vision and serve their communities without gimmicks,
-              unnecessary cost, or overcomplicated tools.
+              Tell us what you are building, what challenges you are facing,
+              and whether you want to explore grant opportunities for the work.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
-                href="/grant"
+                href="/submit-project"
                 className="inline-flex h-12 items-center justify-center rounded-full bg-white px-5 text-sm font-semibold text-[var(--navy)] transition hover:-translate-y-0.5"
               >
-                View Grant Support
+                Submit a Project
               </Link>
               <Link
-                href="/donate"
+                href="/grant"
                 className="inline-flex h-12 items-center justify-center rounded-full border border-white/20 px-5 text-sm font-semibold text-white transition hover:-translate-y-0.5"
               >
-                Visit Donate Page
+                Learn About Grants
               </Link>
             </div>
           </div>
@@ -80,13 +74,6 @@ export default function Home() {
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--blue)]">
               Services
-            </p>
-            <h2 className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-[var(--navy)] sm:text-5xl">
-              Each card now opens into its own page, with room for real detail.
-            </h2>
-            <p className="mt-5 text-lg leading-8 text-[var(--muted)]">
-              The homepage stays clean, while the deeper pages carry the detail
-              your menu and service lineup need.
             </p>
           </div>
 
@@ -157,35 +144,6 @@ export default function Home() {
             >
               Explore Our Process
             </Link>
-          </div>
-        </section>
-
-        <section className="rounded-[32px] border border-[var(--line)] bg-[linear-gradient(135deg,_#163474,_#21499f)] px-6 py-10 text-white shadow-[0_26px_70px_rgba(15,35,95,0.24)] lg:px-10">
-          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-white/70">
-            Results
-          </p>
-          <div className="mt-4 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(340px,0.9fr)] lg:items-end">
-            <div>
-              <h2 className="text-3xl font-semibold tracking-[-0.05em] sm:text-4xl">
-                The site now points toward a fuller structure instead of a
-                one-page placeholder.
-              </h2>
-              <p className="mt-4 max-w-2xl text-lg leading-8 text-white/80">
-                Services, industry pages, results, donate, and grant all have
-                their own destinations now. From here we can keep replacing
-                placeholder copy with your exact language and stories.
-              </p>
-            </div>
-            <div className="grid gap-3">
-              {resultHighlights.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-[22px] border border-white/12 bg-white/10 px-4 py-4 text-base leading-7 text-white/84"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
           </div>
         </section>
       </div>
