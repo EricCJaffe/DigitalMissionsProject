@@ -1,14 +1,23 @@
-import { PageHero } from "@/components/page-hero";
-
 export default function ContactPage() {
   return (
     <main className="px-4 pb-20 pt-6 sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-[1440px] flex-col gap-8">
-        <PageHero
-          eyebrow="Contact"
-          title="Let’s talk through the mission, the constraints, and what would actually help."
-          description="If you are serving a nonprofit, church, or faith-based organization and want clearer digital support, this page now points directly to your scheduler and primary contact details."
-        />
+        <section className="relative overflow-hidden rounded-[36px] border border-[var(--line)] bg-[radial-gradient(circle_at_top_right,_rgba(110,203,255,0.18),_transparent_24%),radial-gradient(circle_at_bottom_left,_rgba(80,129,255,0.12),_transparent_28%),linear-gradient(135deg,_#f7fbff_0%,_#eef4ff_54%,_#f8fbff_100%)] px-6 py-14 shadow-[0_26px_70px_rgba(16,48,110,0.12)] sm:px-8 lg:px-12">
+          <div className="max-w-[1120px]">
+            <p className="inline-flex rounded-full border border-[var(--line)] bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-[var(--blue)]">
+              Contact
+            </p>
+            <h1 className="mt-6 max-w-[1080px] text-[clamp(3.2rem,6vw,5.6rem)] font-semibold leading-[0.96] tracking-[-0.07em] text-[var(--navy)]">
+              Let&apos;s talk through the mission, the constraints, and what
+              would actually help.
+            </h1>
+            <p className="mt-7 max-w-[980px] text-[clamp(1.2rem,2.1vw,1.9rem)] leading-[1.65] text-[var(--muted)]">
+              If you are serving a nonprofit, church, or faith-based
+              organization and want clearer digital support, this page points
+              directly to your scheduler and primary contact details.
+            </p>
+          </div>
+        </section>
 
         <section className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
           <div className="grid gap-6">
@@ -18,86 +27,91 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               className="group overflow-hidden rounded-[30px] border border-[var(--line)] bg-[linear-gradient(145deg,_#173879,_#2854ab)] p-8 text-white shadow-[0_25px_60px_rgba(15,45,105,0.28)] transition hover:-translate-y-1"
             >
-              <div className="flex items-start justify-between gap-6">
-                <div>
+              <div className="grid gap-8">
+                <div className="flex items-start justify-between gap-6">
                   <p className="text-sm font-semibold uppercase tracking-[0.24em] text-white/65">
                     Schedule time
                   </p>
-                  <h2 className="mt-4 max-w-md text-3xl font-semibold tracking-[-0.05em]">
+                  <div className="hidden h-32 w-32 shrink-0 items-center justify-center rounded-[28px] border border-white/12 bg-white/10 lg:flex">
+                    <svg
+                      viewBox="0 0 120 120"
+                      aria-hidden="true"
+                      className="h-20 w-20 text-white"
+                    >
+                      <rect
+                        x="18"
+                        y="24"
+                        width="84"
+                        height="72"
+                        rx="18"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="6"
+                      />
+                      <path
+                        d="M35 18v20M85 18v20M18 44h84"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeWidth="6"
+                      />
+                      <circle cx="44" cy="62" r="6" fill="currentColor" />
+                      <circle
+                        cx="60"
+                        cy="62"
+                        r="6"
+                        fill="currentColor"
+                        opacity="0.55"
+                      />
+                      <path
+                        d="m71 80 9 9 18-20"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="6"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                <div className="max-w-[680px]">
+                  <h2 className="text-3xl font-semibold tracking-[-0.05em] sm:text-[2.5rem]">
                     Book directly on Eric&apos;s calendar.
                   </h2>
-                  <p className="mt-4 max-w-lg text-lg leading-8 text-white/82">
+                  <p className="mt-4 text-lg leading-8 text-white/82 sm:text-[1.15rem]">
                     Use the scheduler for a focused conversation about your
                     organization, current obstacles, and what kind of digital
                     support would be most helpful.
                   </p>
-                  <span className="mt-8 inline-flex h-12 items-center justify-center rounded-full bg-white px-5 text-sm font-semibold text-[var(--navy)] transition group-hover:-translate-y-0.5">
+                </div>
+
+                <div className="flex flex-wrap gap-4">
+                  <span className="inline-flex h-12 items-center justify-center rounded-full bg-white px-5 text-sm font-semibold text-[var(--navy)] transition group-hover:-translate-y-0.5">
                     Open Scheduler
                   </span>
                 </div>
 
-                <div className="hidden h-40 w-40 items-center justify-center rounded-[28px] border border-white/12 bg-white/10 lg:flex">
-                  <svg
-                    viewBox="0 0 120 120"
-                    aria-hidden="true"
-                    className="h-24 w-24 text-white"
-                  >
-                    <rect
-                      x="18"
-                      y="24"
-                      width="84"
-                      height="72"
-                      rx="18"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="6"
-                    />
-                    <path
-                      d="M35 18v20M85 18v20M18 44h84"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeWidth="6"
-                    />
-                    <circle cx="44" cy="62" r="6" fill="currentColor" />
-                    <circle cx="60" cy="62" r="6" fill="currentColor" opacity="0.55" />
-                    <path
-                      d="m71 80 9 9 18-20"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="6"
-                    />
-                  </svg>
+                <div className="grid gap-4 pt-2 sm:grid-cols-2">
+                  <div className="rounded-[22px] border border-white/12 bg-white/10 px-5 py-5">
+                    <p className="text-sm font-semibold uppercase tracking-[0.24em] text-white/65">
+                      Email
+                    </p>
+                    <p className="mt-3 break-words text-[1.05rem] leading-7 text-white">
+                      ejaffe@foundationstoneadvisors.com
+                    </p>
+                  </div>
+                  <div className="rounded-[22px] border border-white/12 bg-white/10 px-5 py-5">
+                    <p className="text-sm font-semibold uppercase tracking-[0.24em] text-white/65">
+                      Phone
+                    </p>
+                    <p className="mt-3 text-[1.05rem] leading-7 text-white">
+                      904-483-6881
+                    </p>
+                  </div>
                 </div>
               </div>
             </a>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              <a
-                href="mailto:ejaffe@foundationstoneadvisors.com"
-                className="rounded-[22px] border border-[var(--line)] bg-white/92 px-5 py-5 shadow-[0_18px_42px_rgba(15,42,102,0.08)] transition hover:-translate-y-0.5"
-              >
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[var(--blue)]">
-                  Email
-                </p>
-                <p className="mt-3 text-lg text-[var(--navy)]">
-                  ejaffe@foundationstoneadvisors.com
-                </p>
-              </a>
-              <a
-                href="tel:19044836881"
-                className="rounded-[22px] border border-[var(--line)] bg-white/92 px-5 py-5 shadow-[0_18px_42px_rgba(15,42,102,0.08)] transition hover:-translate-y-0.5"
-              >
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[var(--blue)]">
-                  Phone
-                </p>
-                <p className="mt-3 text-lg text-[var(--navy)]">
-                  904-483-6881
-                </p>
-              </a>
-            </div>
           </div>
 
           <section className="rounded-[30px] border border-[var(--line)] bg-white/96 p-6 shadow-[0_18px_42px_rgba(15,42,102,0.08)] sm:p-8">
@@ -111,7 +125,7 @@ export default function ContactPage() {
             <form className="mt-8 grid gap-6" action="#" method="post">
               <div className="grid gap-6 md:grid-cols-2">
                 <label className="grid gap-3">
-                  <span className="text-[2rem] font-semibold tracking-[-0.04em] text-[var(--navy)] md:text-[1.95rem]">
+                  <span className="text-[1.8rem] font-semibold tracking-[-0.04em] text-[var(--navy)] md:text-[1.7rem]">
                     Your Name *
                   </span>
                   <input
@@ -123,7 +137,7 @@ export default function ContactPage() {
                 </label>
 
                 <label className="grid gap-3">
-                  <span className="text-[2rem] font-semibold tracking-[-0.04em] text-[var(--navy)] md:text-[1.95rem]">
+                  <span className="text-[1.8rem] font-semibold tracking-[-0.04em] text-[var(--navy)] md:text-[1.7rem]">
                     Email Address *
                   </span>
                   <input
@@ -136,7 +150,7 @@ export default function ContactPage() {
               </div>
 
               <label className="grid gap-3">
-                <span className="text-[2rem] font-semibold tracking-[-0.04em] text-[var(--navy)] md:text-[1.95rem]">
+                <span className="text-[1.8rem] font-semibold tracking-[-0.04em] text-[var(--navy)] md:text-[1.7rem]">
                   Organization
                 </span>
                 <input
@@ -148,7 +162,7 @@ export default function ContactPage() {
               </label>
 
               <label className="grid gap-3">
-                <span className="text-[2rem] font-semibold tracking-[-0.04em] text-[var(--navy)] md:text-[1.95rem]">
+                <span className="text-[1.8rem] font-semibold tracking-[-0.04em] text-[var(--navy)] md:text-[1.7rem]">
                   Subject *
                 </span>
                 <input
@@ -160,7 +174,7 @@ export default function ContactPage() {
               </label>
 
               <label className="grid gap-3">
-                <span className="text-[2rem] font-semibold tracking-[-0.04em] text-[var(--navy)] md:text-[1.95rem]">
+                <span className="text-[1.8rem] font-semibold tracking-[-0.04em] text-[var(--navy)] md:text-[1.7rem]">
                   Message *
                 </span>
                 <textarea
@@ -172,7 +186,7 @@ export default function ContactPage() {
 
               <button
                 type="submit"
-                className="inline-flex h-24 items-center justify-center gap-4 rounded-[24px] bg-[var(--navy)] px-8 text-2xl font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#23447f]"
+                className="inline-flex h-20 items-center justify-center gap-4 rounded-[24px] bg-[var(--navy)] px-8 text-xl font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#23447f]"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true" className="h-8 w-8">
                   <path
