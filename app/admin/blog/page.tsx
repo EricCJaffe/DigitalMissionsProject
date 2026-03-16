@@ -1,0 +1,1 @@
+export default function AdminBlog(){return <main className="section"><h1 className="text-3xl font-bold">Admin Blog</h1><p className="mt-3">Protected CMS dashboard placeholder for Supabase-authenticated editors.</p></main>}

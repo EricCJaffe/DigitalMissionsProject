@@ -1,0 +1,1 @@
+export default function EditBlog(){return <main className="section"><h1 className="text-3xl font-bold">Edit Blog Post</h1><p className="mt-3">TipTap editor + Supabase update flow placeholder.</p></main>}
