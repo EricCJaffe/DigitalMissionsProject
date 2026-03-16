@@ -11,9 +11,6 @@ export function SiteHeader() {
               D
             </div>
             <div>
-              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">
-                Digital Missions
-              </p>
               <p className="text-2xl font-semibold tracking-[-0.04em] text-[var(--navy)]">
                 Digital Missions Project
               </p>
@@ -76,9 +73,6 @@ export function SiteHeader() {
               D
             </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">
-                Digital Missions
-              </p>
               <p className="text-xl font-semibold tracking-[-0.04em] text-[var(--navy)]">
                 Digital Missions Project
               </p>
