@@ -77,7 +77,7 @@ export default function ContactPage() {
 
                 <div className="max-w-[680px]">
                   <h2 className="text-3xl font-semibold tracking-[-0.05em] sm:text-[2.5rem]">
-                    Book directly on Eric&apos;s calendar.
+                    Book directly on the calendar.
                   </h2>
                   <p className="mt-4 text-lg leading-8 text-white/82 sm:text-[1.15rem]">
                     Use the scheduler for a focused conversation about your
@@ -92,7 +92,7 @@ export default function ContactPage() {
                   </span>
                 </div>
 
-                <div className="grid gap-4 pt-2 sm:grid-cols-2">
+                <div className="grid gap-4 pt-2">
                   <div className="rounded-[22px] border border-white/12 bg-white/10 px-5 py-5">
                     <p className="text-sm font-semibold uppercase tracking-[0.24em] text-white/65">
                       Email
