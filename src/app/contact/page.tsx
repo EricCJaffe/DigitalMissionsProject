@@ -1,4 +1,45 @@
-export default function ContactPage() {
+function getStatusMessage(
+  status: string | string[] | undefined,
+): { tone: "success" | "error"; text: string } | null {
+  if (status === "success") {
+    return {
+      tone: "success",
+      text: "Your message was sent successfully. We will follow up by email.",
+    };
+  }
+
+  if (status === "missing") {
+    return {
+      tone: "error",
+      text: "Please complete the required form fields before submitting.",
+    };
+  }
+
+  if (status === "config-error") {
+    return {
+      tone: "error",
+      text: "The form email service is not configured yet. Please contact us directly for now.",
+    };
+  }
+
+  if (status === "error") {
+    return {
+      tone: "error",
+      text: "Something went wrong while sending your message. Please try again or contact us directly.",
+    };
+  }
+
+  return null;
+}
+
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ status?: string | string[] }>;
+}) {
+  const { status } = await searchParams;
+  const statusMessage = getStatusMessage(status);
+
   return (
     <main className="px-4 pb-20 pt-6 sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-[1440px] flex-col gap-8">
@@ -122,7 +163,19 @@ export default function ContactPage() {
               Share what your organization is trying to accomplish.
             </h2>
 
-            <form className="mt-8 grid gap-6" action="#" method="post">
+            {statusMessage ? (
+              <div
+                className={`mt-6 rounded-[22px] border px-5 py-4 text-base leading-7 ${
+                  statusMessage.tone === "success"
+                    ? "border-[#b8eadf] bg-[#eefaf7] text-[#166a5a]"
+                    : "border-[#f2c6c6] bg-[#fff5f5] text-[#933737]"
+                }`}
+              >
+                {statusMessage.text}
+              </div>
+            ) : null}
+
+            <form className="mt-8 grid gap-6" action="/api/contact" method="post">
               <div className="grid gap-6 md:grid-cols-2">
                 <label className="grid gap-3">
                   <span className="text-[1.8rem] font-semibold tracking-[-0.04em] text-[var(--navy)] md:text-[1.7rem]">
@@ -131,6 +184,7 @@ export default function ContactPage() {
                   <input
                     type="text"
                     name="name"
+                    required
                     placeholder="John Smith"
                     className="contact-input"
                   />
@@ -143,6 +197,7 @@ export default function ContactPage() {
                   <input
                     type="email"
                     name="email"
+                    required
                     placeholder="john@example.com"
                     className="contact-input"
                   />
@@ -168,6 +223,7 @@ export default function ContactPage() {
                 <input
                   type="text"
                   name="subject"
+                  required
                   placeholder="How can we help?"
                   className="contact-input"
                 />
@@ -179,6 +235,7 @@ export default function ContactPage() {
                 </span>
                 <textarea
                   name="message"
+                  required
                   placeholder="Tell us about your organization and how we can serve you..."
                   className="contact-input min-h-[230px] resize-y py-7"
                 />

@@ -1,4 +1,42 @@
-export default function SubmitProjectPage() {
+function getStatusMessage(
+  status: string | string[] | undefined,
+): { tone: "success" | "error"; text: string } | null {
+  if (status === "success") {
+    return {
+      tone: "success",
+      text: "Your project request was sent successfully. We will review it and follow up by email.",
+    };
+  }
+
+  if (status === "missing") {
+    return {
+      tone: "error",
+      text: "Please complete the required fields before submitting your project request.",
+    };
+  }
+
+  if (status === "config-error") {
+    return {
+      tone: "error",
+      text: "The form email service is not configured yet. Please contact us directly for now.",
+    };
+  }
+
+  if (status === "error") {
+    return {
+      tone: "error",
+      text: "Something went wrong while sending your project request. Please try again.",
+    };
+  }
+
+  return null;
+}
+
+export default async function SubmitProjectPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ status?: string | string[] }>;
+}) {
   const projectTypes = [
     "Custom Website",
     "Process Automation",
@@ -6,6 +44,8 @@ export default function SubmitProjectPage() {
     "Intranet Solution",
     "Other / Not Sure",
   ];
+  const { status } = await searchParams;
+  const statusMessage = getStatusMessage(status);
 
   return (
     <main className="px-4 pb-20 pt-6 sm:px-6 lg:px-8">
@@ -51,7 +91,19 @@ export default function SubmitProjectPage() {
           </div>
         </section>
 
-        <form className="grid gap-8" action="#" method="post">
+        <form className="grid gap-8" action="/api/submit-project" method="post">
+          {statusMessage ? (
+            <div
+              className={`rounded-[22px] border px-5 py-4 text-base leading-7 ${
+                statusMessage.tone === "success"
+                  ? "border-[#b8eadf] bg-[#eefaf7] text-[#166a5a]"
+                  : "border-[#f2c6c6] bg-[#fff5f5] text-[#933737]"
+              }`}
+            >
+              {statusMessage.text}
+            </div>
+          ) : null}
+
           <section className="rounded-[32px] border border-[var(--line)] bg-white/96 p-6 shadow-[0_18px_42px_rgba(15,42,102,0.08)] sm:p-8">
             <div className="flex items-center gap-4">
               <div className="flex h-16 w-16 items-center justify-center rounded-[18px] bg-[var(--navy)] text-3xl font-semibold text-white">
@@ -70,6 +122,7 @@ export default function SubmitProjectPage() {
                 <input
                   type="text"
                   name="organization_name"
+                  required
                   placeholder="Grace Community Church"
                   className="contact-input"
                 />
@@ -79,8 +132,12 @@ export default function SubmitProjectPage() {
                 <span className="text-[1.8rem] font-semibold tracking-[-0.04em] text-[var(--navy)]">
                   Organization Type *
                 </span>
-                <select name="organization_type" className="contact-input">
-                  <option>Select type</option>
+                <select
+                  name="organization_type"
+                  required
+                  className="contact-input"
+                >
+                  <option value="">Select type</option>
                   <option>Church</option>
                   <option>Nonprofit</option>
                   <option>Faith-Based Business</option>
@@ -95,6 +152,7 @@ export default function SubmitProjectPage() {
                 <input
                   type="text"
                   name="contact_name"
+                  required
                   placeholder="John Smith"
                   className="contact-input"
                 />
@@ -107,6 +165,7 @@ export default function SubmitProjectPage() {
                 <input
                   type="email"
                   name="email"
+                  required
                   placeholder="john@gracechurch.org"
                   className="contact-input"
                 />
@@ -162,6 +221,7 @@ export default function SubmitProjectPage() {
                       type="radio"
                       name="project_type"
                       value={type}
+                      required
                       className="sr-only"
                     />
                     <div className="text-2xl font-semibold text-[var(--muted)]">
@@ -179,6 +239,7 @@ export default function SubmitProjectPage() {
                 </span>
                 <textarea
                   name="project_description"
+                  required
                   placeholder="Tell us about the website, automation, dashboard, or other solution you're envisioning..."
                   className="contact-input min-h-[180px] resize-y py-7"
                 />
