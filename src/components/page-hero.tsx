@@ -1,0 +1,24 @@
+type PageHeroProps = {
+  eyebrow: string;
+  title: string;
+  description: string;
+};
+
+export function PageHero({ eyebrow, title, description }: PageHeroProps) {
+  return (
+    <section className="relative overflow-hidden rounded-[36px] border border-[var(--line)] bg-[radial-gradient(circle_at_top_left,_rgba(103,160,255,0.28),_transparent_32%),linear-gradient(135deg,_#f7fbff_0%,_#eef4ff_42%,_#f8fbff_100%)] px-6 py-14 shadow-[0_26px_70px_rgba(16,48,110,0.12)] sm:px-8 lg:px-12">
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_center,_rgba(24,153,138,0.16),_transparent_58%)]" />
+      <div className="relative max-w-4xl">
+        <p className="inline-flex rounded-full border border-[var(--line)] bg-white/75 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-[var(--blue)]">
+          {eyebrow}
+        </p>
+        <h1 className="mt-5 text-5xl font-semibold tracking-[-0.06em] text-[var(--navy)] sm:text-6xl">
+          {title}
+        </h1>
+        <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--muted)] sm:text-xl">
+          {description}
+        </p>
+      </div>
+    </section>
+  );
+}

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 const jakartaSans = Plus_Jakarta_Sans({
@@ -14,7 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Digital Missions Project",
-  description: "Web, automation, and AI systems for mission-driven teams.",
+  description:
+    "Websites, automation, and practical AI support for nonprofits, churches, and faith-based businesses.",
 };
 
 export default function RootLayout({
@@ -27,7 +30,9 @@ export default function RootLayout({
       <body
         className={`${jakartaSans.variable} ${geistMono.variable} antialiased`}
       >
+        <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );
