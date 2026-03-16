@@ -18,7 +18,7 @@ const team = [
     initials: "JB",
     name: "Joey Bushe",
     role: "Senior Business Analyst",
-    bio: "Process-minded strategist with deep experience organizing teams, clarifying workflows, and helping turn vision into practical execution. Joey helps build the systems that support steady, sustainable impact.",
+    bio: "Joey helps bring vision into practical execution through digital workflows, web development, graphic design, and video. He supports the creative and technical work that helps mission-driven organizations communicate clearly, operate smoothly, and extend their reach.",
   },
 ];
 
