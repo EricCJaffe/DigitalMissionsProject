@@ -54,7 +54,6 @@ export function ServiceCard({ service }: { service: Service }) {
       <Link
         href={`/services/${service.slug}`}
         className={`mt-auto inline-flex h-14 w-full items-center justify-center rounded-2xl text-lg font-semibold transition hover:-translate-y-0.5 ${buttonClass}`}
-        style={{ marginTop: "2.5rem" }}
       >
         Explore {service.shortName}
       </Link>
