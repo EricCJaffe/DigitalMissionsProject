@@ -60,9 +60,6 @@ export function SiteFooter() {
             >
               Submit Project
             </Link>
-            <Link href="/donate" className="text-white/84 transition hover:text-white">
-              Donate
-            </Link>
           </div>
         </div>
       </div>

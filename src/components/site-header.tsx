@@ -57,12 +57,14 @@ export function SiteHeader() {
               </ul>
             </nav>
 
-            <Link
-              href="/contact"
+            <a
+              href="https://for-the-least-of-these-474406.churchcenter.com/giving/to/digital-missions-project"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex h-12 items-center justify-center rounded-full bg-[var(--blue)] px-6 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[var(--blue-strong)]"
             >
-              Book Consultation
-            </Link>
+              Donate
+            </a>
           </div>
         </div>
 
@@ -126,12 +128,14 @@ export function SiteHeader() {
             )}
           </nav>
 
-          <Link
-            href="/contact"
+          <a
+            href="https://for-the-least-of-these-474406.churchcenter.com/giving/to/digital-missions-project"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex h-12 items-center justify-center rounded-full bg-[var(--blue)] px-6 text-sm font-semibold text-white"
           >
-            Book Consultation
-          </Link>
+            Donate
+          </a>
         </div>
       </div>
     </header>

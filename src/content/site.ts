@@ -177,11 +177,6 @@ export const navigation = [
         href: "/submit-project",
         description: "Share your project idea and let us know what kind of support you need.",
       },
-      {
-        label: "Donate",
-        href: "/donate",
-        description: "Support mission-driven work that serves churches and nonprofits.",
-      },
     ],
   },
   {
@@ -218,13 +213,13 @@ export const processSteps = [
 ];
 
 export const donateContent = {
-  title: "Support Digital Work That Strengthens Local Impact",
+  title: "Support The Mission Of Digital Missions Project",
   description:
-    "The donate page stays focused on helping churches, nonprofits, and faith-based organizations access strong digital support without the normal agency cost structure.",
+    "Your donation helps further the mission of Digital Missions Project by expanding our ability to serve nonprofits, churches, and faith-based organizations with practical digital support.",
   bullets: [
-    "Help subsidize discounted work for mission-driven organizations",
-    "Expand access to practical websites, automation, and training",
-    "Support community-facing digital infrastructure with lasting value",
+    "Support technology projects that help mission-driven organizations serve more people",
+    "Help create capacity for churches and nonprofits that may not be able to fund everything on their own",
+    "Strengthen the long-term mission of this project and the organizations it supports",
   ],
 };
 
