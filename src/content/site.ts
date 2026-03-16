@@ -229,12 +229,12 @@ export const donateContent = {
 };
 
 export const grantContent = {
-  title: "Grant Support For Mission-Driven Growth",
+  title: "Grant Support For Churches And Nonprofits That Need Help Moving Forward",
   description:
-    "We help organizations think through grant-ready digital initiatives, especially when outreach, infrastructure, and community impact need better support.",
+    "Some churches and nonprofits are trying to move important work forward but do not have the financial capacity to cover the full cost. In some cases, partner support and a portion of our service proceeds allow us to offer significantly discounted, and sometimes even free, help.",
   bullets: [
-    "Clarify projects that are strong candidates for grant funding",
-    "Translate digital needs into concrete impact language",
-    "Support planning around sustainable execution after funding",
+    "Some partner support helps offset project costs for qualifying organizations",
+    "A portion of our service revenue is set aside to help churches and nonprofits with financial need",
+    "The first step is to submit your project so we can understand the need, the current state of your ministry or organization, and whether we may be able to help",
   ],
 };
