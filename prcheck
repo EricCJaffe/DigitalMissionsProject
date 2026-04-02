@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+bash .claude/hooks/sync-check.sh
