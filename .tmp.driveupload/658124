@@ -1,0 +1,16 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/about/page": "/about",
+  "/api/contact/route": "/api/contact",
+  "/api/submit-project/route": "/api/submit-project",
+  "/contact/page": "/contact",
+  "/donate/page": "/donate",
+  "/favicon.ico/route": "/favicon.ico",
+  "/grant/page": "/grant",
+  "/industries/[slug]/page": "/industries/[slug]",
+  "/our-process/page": "/our-process",
+  "/page": "/",
+  "/services/[slug]/page": "/services/[slug]",
+  "/submit-project/page": "/submit-project"
+}
