@@ -58,7 +58,7 @@ export default async function SubmitProjectPage({
             <h1 className="mt-8 text-[clamp(3.4rem,8vw,6.4rem)] font-semibold leading-[0.95] tracking-[-0.08em] text-[var(--navy)]">
               Submit Your Project
             </h1>
-            <p className="mx-auto mt-6 max-w-5xl text-[clamp(1.2rem,2.1vw,1.9rem)] leading-[1.65] text-[var(--muted)]">
+            <p className="mx-auto mt-6 max-w-5xl text-[clamp(1.2rem,2.1vw,1.9rem)] leading-[1.65] text-[var(--muted-foreground)]">
               Tell us about your organization and the challenges you&apos;re
               facing. We&apos;ll work with you to find the best solution.
             </p>
@@ -83,7 +83,7 @@ export default async function SubmitProjectPage({
               <h2 className="text-3xl font-semibold tracking-[-0.05em] text-[var(--navy)]">
                 Grants May Be Available
               </h2>
-              <p className="mt-2 text-lg leading-8 text-[var(--muted)]">
+              <p className="mt-2 text-lg leading-8 text-[var(--muted-foreground)]">
                 Qualifying faith-based nonprofits and churches may be eligible
                 for grants to fund their digital projects.
               </p>
@@ -226,7 +226,7 @@ export default async function SubmitProjectPage({
                     />
                     <div className="rounded-[24px] border border-[var(--line)] bg-[#f9fbff] p-8 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.65)] transition hover:-translate-y-0.5 hover:border-[rgba(46,98,230,0.28)] hover:bg-white peer-checked:border-[var(--blue)] peer-checked:bg-[linear-gradient(180deg,_rgba(46,98,230,0.12),_rgba(255,255,255,0.98))] peer-checked:shadow-[0_16px_34px_rgba(46,98,230,0.16)]">
                       <div className="flex items-start justify-between gap-4">
-                        <div className="text-2xl font-semibold text-[var(--muted)] transition peer-checked:text-[var(--navy)]">
+                        <div className="text-2xl font-semibold text-[var(--muted-foreground)] transition peer-checked:text-[var(--navy)]">
                           {type}
                         </div>
                         <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[rgba(46,98,230,0.24)] bg-white transition peer-checked:border-[var(--blue)] peer-checked:bg-[var(--blue)]">
@@ -329,7 +329,7 @@ export default async function SubmitProjectPage({
                   <span className="block text-[1.8rem] font-semibold tracking-[-0.04em] text-[var(--navy)]">
                     I&apos;m interested in learning about grant opportunities
                   </span>
-                  <span className="mt-2 block text-lg leading-8 text-[var(--muted)]">
+                  <span className="mt-2 block text-lg leading-8 text-[var(--muted-foreground)]">
                     We may have grants available for qualifying faith-based
                     organizations.
                   </span>

@@ -31,14 +31,14 @@ export default async function ServicePage({
             <h2 className="text-3xl font-semibold tracking-[-0.05em] text-[var(--navy)]">
               What this looks like in practice
             </h2>
-            <p className="mt-5 text-lg leading-8 text-[var(--muted)]">
+            <p className="mt-5 text-lg leading-8 text-[var(--muted-foreground)]">
               {service.emphasis}
             </p>
             <div className="mt-8 grid gap-4">
               {service.bullets.map((bullet) => (
                 <div
                   key={bullet}
-                  className="rounded-[22px] border border-[var(--line)] bg-[var(--panel)] px-5 py-5 text-lg leading-8 text-[var(--muted)]"
+                  className="rounded-[22px] border border-[var(--line)] bg-[var(--panel)] px-5 py-5 text-lg leading-8 text-[var(--muted-foreground)]"
                 >
                   {bullet}
                 </div>

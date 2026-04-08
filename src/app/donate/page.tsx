@@ -17,7 +17,7 @@ export default function DonatePage() {
             <h2 className="text-3xl font-semibold tracking-[-0.05em] text-[var(--navy)]">
               Why give
             </h2>
-            <p className="mt-5 text-lg leading-8 text-[var(--muted)]">
+            <p className="mt-5 text-lg leading-8 text-[var(--muted-foreground)]">
               Every donation helps further the mission of this project. Your
               support helps us continue building practical digital tools,
               systems, and support for churches, nonprofits, and faith-based
@@ -28,7 +28,7 @@ export default function DonatePage() {
               {donateContent.bullets.map((bullet) => (
                 <div
                   key={bullet}
-                  className="rounded-[22px] border border-[var(--line)] bg-[var(--panel)] px-5 py-5 text-lg leading-8 text-[var(--muted)]"
+                  className="rounded-[22px] border border-[var(--line)] bg-[var(--panel)] px-5 py-5 text-lg leading-8 text-[var(--muted-foreground)]"
                 >
                   {bullet}
                 </div>

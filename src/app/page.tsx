@@ -65,7 +65,7 @@ export default function Home() {
             <motion.h1
               variants={fadeUp}
               custom={1}
-              className="mt-5 font-serif text-5xl leading-[1.1] tracking-[-0.02em] text-white sm:text-6xl lg:text-[70px]"
+              className="mt-5 text-5xl font-semibold leading-[1.1] tracking-[-0.06em] text-white sm:text-6xl lg:text-[70px]"
             >
               Digital tools for ministries and mission-driven organizations.
             </motion.h1>
@@ -155,7 +155,7 @@ export default function Home() {
             <motion.h2
               variants={fadeUp}
               custom={1}
-              className="mt-4 font-serif text-4xl tracking-[-0.02em] text-white sm:text-5xl"
+              className="mt-4 font-semibold text-4xl tracking-[-0.02em] text-white sm:text-5xl"
             >
               Ministry-minded, nonprofit-aware,{" "}
               <br className="hidden lg:block" />
@@ -251,7 +251,7 @@ export default function Home() {
             <motion.h2
               variants={fadeUp}
               custom={1}
-              className="mt-4 font-serif text-4xl tracking-[-0.02em] text-[var(--navy)] sm:text-5xl"
+              className="mt-4 font-semibold text-4xl tracking-[-0.02em] text-[var(--navy)] sm:text-5xl"
             >
               Built around organizations making{" "}
               <br className="hidden lg:block" />
@@ -370,7 +370,7 @@ export default function Home() {
             <motion.h2
               variants={fadeUp}
               custom={1}
-              className="mt-4 font-serif text-4xl tracking-[-0.02em] text-white sm:text-5xl"
+              className="mt-4 font-semibold text-4xl tracking-[-0.02em] text-white sm:text-5xl"
             >
               One clear path. No wasted effort.
             </motion.h2>
@@ -447,7 +447,7 @@ export default function Home() {
               <motion.h2
                 variants={fadeUp}
                 custom={1}
-                className="mt-4 font-serif text-4xl tracking-[-0.02em] text-[var(--navy)] sm:text-5xl"
+                className="mt-4 font-semibold text-4xl tracking-[-0.02em] text-[var(--navy)] sm:text-5xl"
               >
                 Practical digital work for
                 <br className="hidden lg:block" /> mission-driven teams.
@@ -556,7 +556,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="mt-4 font-serif text-4xl tracking-[-0.02em] text-white sm:text-5xl"
+            className="mt-4 font-semibold text-4xl tracking-[-0.02em] text-white sm:text-5xl"
           >
             Applying for a grant or submitting a project?
           </motion.h2>

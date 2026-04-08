@@ -35,7 +35,7 @@ export default async function IndustryPage({
               {industry.bullets.map((bullet) => (
                 <div
                   key={bullet}
-                  className="rounded-[22px] border border-[var(--line)] bg-[var(--panel)] px-5 py-5 text-lg leading-8 text-[var(--muted)]"
+                  className="rounded-[22px] border border-[var(--line)] bg-[var(--panel)] px-5 py-5 text-lg leading-8 text-[var(--muted-foreground)]"
                 >
                   {bullet}
                 </div>
@@ -47,7 +47,7 @@ export default async function IndustryPage({
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--blue)]">
               Why this matters
             </p>
-            <p className="mt-4 text-lg leading-8 text-[var(--muted)]">
+            <p className="mt-4 text-lg leading-8 text-[var(--muted-foreground)]">
               Different organizations carry different language, trust concerns,
               and budget realities. We keep the tone, tools, and structure
               aligned with that reality.

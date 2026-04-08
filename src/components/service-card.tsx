@@ -40,7 +40,7 @@ export function ServiceCard({
         ? "bg-[var(--teal)] text-white hover:bg-[#138678]"
         : "bg-[var(--blue)] text-white hover:bg-[var(--blue-strong)]";
   const bulletClass = isDark ? "text-[#4fe0cc]" : "text-[var(--blue)]";
-  const copyClass = isDark ? "text-white/82" : "text-[var(--muted)]";
+  const copyClass = isDark ? "text-white/82" : "text-[var(--muted-foreground)]";
 
   return (
     <article

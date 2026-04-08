@@ -38,7 +38,7 @@ export default function AboutPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--blue)]">
               Our Story
             </p>
-            <div className="mt-6 grid gap-5 text-lg leading-8 text-[var(--muted)]">
+            <div className="mt-6 grid gap-5 text-lg leading-8 text-[var(--muted-foreground)]">
               <p>
                 Digital Missions Project grew out of a conviction that
                 nonprofits, churches, and faith-based businesses should have

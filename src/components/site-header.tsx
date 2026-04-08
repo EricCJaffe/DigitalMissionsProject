@@ -73,7 +73,7 @@ export function SiteHeader() {
                       className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition ${
                         pathname === item.href
                           ? "bg-white text-[var(--navy)]"
-                          : "text-[var(--muted)] hover:bg-white hover:text-[var(--navy)]"
+                          : "text-[var(--muted-foreground)] hover:bg-white hover:text-[var(--navy)]"
                       }`}
                     >
                       {item.label}
@@ -92,7 +92,7 @@ export function SiteHeader() {
                                 <p className="font-semibold text-[var(--navy)]">
                                   {subItem.label}
                                 </p>
-                                <p className="mt-1 text-sm leading-6 text-[var(--muted)]">
+                                <p className="mt-1 text-sm leading-6 text-[var(--muted-foreground)]">
                                   {subItem.description}
                                 </p>
                               </Link>
@@ -191,7 +191,7 @@ export function SiteHeader() {
                             <p className="font-medium text-[var(--navy)]">
                               {subItem.label}
                             </p>
-                            <p className="mt-1 text-sm leading-6 text-[var(--muted)]">
+                            <p className="mt-1 text-sm leading-6 text-[var(--muted-foreground)]">
                               {subItem.description}
                             </p>
                           </Link>

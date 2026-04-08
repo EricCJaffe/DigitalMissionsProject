@@ -64,7 +64,7 @@ export default function OurProcessPage() {
               className={`rounded-full px-8 py-3 text-sm font-semibold transition-all ${
                 activeTab === "nonprofit"
                   ? "bg-[var(--blue)] text-white shadow-md"
-                  : "text-[var(--muted)] hover:text-[var(--navy)]"
+                  : "text-[var(--muted-foreground)] hover:text-[var(--navy)]"
               }`}
             >
               Nonprofit & Church
@@ -74,7 +74,7 @@ export default function OurProcessPage() {
               className={`rounded-full px-8 py-3 text-sm font-semibold transition-all ${
                 activeTab === "business"
                   ? "bg-[var(--blue)] text-white shadow-md"
-                  : "text-[var(--muted)] hover:text-[var(--navy)]"
+                  : "text-[var(--muted-foreground)] hover:text-[var(--navy)]"
               }`}
             >
               BusinessOS
@@ -91,7 +91,7 @@ export default function OurProcessPage() {
                   <h2 className="text-4xl font-semibold tracking-[-0.05em] text-[var(--navy)]">
                     Ministry Playbook Discovery
                   </h2>
-                  <p className="mt-4 text-lg leading-8 text-[var(--muted)]">
+                  <p className="mt-4 text-lg leading-8 text-[var(--muted-foreground)]">
                     A discovery intake process designed specifically for ministry environments. We assess every department against the Foundation Stone methodology to identify gaps, mapping, and automation opportunities.
                   </p>
                 </section>
@@ -121,7 +121,7 @@ export default function OurProcessPage() {
                           <tr key={r.score} className="hover:bg-slate-50 transition">
                             <td className="px-4 py-4 font-bold text-[var(--blue)]">{r.score}</td>
                             <td className="px-4 py-4 font-semibold">{r.level}</td>
-                            <td className="px-4 py-4 text-[var(--muted)]">{r.desc}</td>
+                            <td className="px-4 py-4 text-[var(--muted-foreground)]">{r.desc}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -152,7 +152,7 @@ export default function OurProcessPage() {
                 <h2 className="text-4xl font-semibold tracking-[-0.05em] text-[var(--navy)]">
                   BusinessOS Discovery Framework
                 </h2>
-                <p className="mt-4 max-w-3xl text-lg leading-8 text-[var(--muted)]">
+                <p className="mt-4 max-w-3xl text-lg leading-8 text-[var(--muted-foreground)]">
                   An 8-16 week framework for transforming business operations from tribal knowledge to documented, measurable, repeatable systems.
                 </p>
               </section>
@@ -165,7 +165,7 @@ export default function OurProcessPage() {
                       {p.icon}
                     </div>
                     <h4 className="mt-6 text-2xl font-bold text-[var(--navy)]">{p.name}</h4>
-                    <p className="mt-3 text-[var(--muted)] leading-relaxed">{p.focus}</p>
+                    <p className="mt-3 text-[var(--muted-foreground)] leading-relaxed">{p.focus}</p>
                   </div>
                 ))}
               </section>
@@ -213,7 +213,7 @@ export default function OurProcessPage() {
                         <div className="h-full w-[90%] bg-[var(--teal)]" />
                       </div>
                     </div>
-                    <p className="text-sm text-[var(--muted)] italic">
+                    <p className="text-sm text-[var(--muted-foreground)] italic">
                       Priority is calculated as: (Feasibility + Impact) × Business Alignment Weight
                     </p>
                   </div>
@@ -221,7 +221,7 @@ export default function OurProcessPage() {
 
                 <div className="rounded-[32px] border border-[var(--line)] bg-[var(--panel)] p-8">
                   <h4 className="text-xl font-bold text-[var(--navy)]">Master Company Playbook</h4>
-                  <p className="mt-4 text-[var(--muted)] leading-relaxed">
+                  <p className="mt-4 text-[var(--muted-foreground)] leading-relaxed">
                     The ultimate deliverable is a single source of truth for your entire organization. Includes 8 standardized sections per department, automation roadmaps, and ROI projections.
                   </p>
                   <div className="mt-6 flex flex-wrap gap-2">

@@ -17,7 +17,7 @@ export default function GrantPage() {
             <h2 className="text-3xl font-semibold tracking-[-0.05em] text-[var(--navy)]">
               How this works
             </h2>
-            <p className="mt-5 text-lg leading-8 text-[var(--muted)]">
+            <p className="mt-5 text-lg leading-8 text-[var(--muted-foreground)]">
               We want this page to make one thing clear: if your church or
               nonprofit has an important digital need but limited financial
               capacity, we still want to understand the project. We cannot
@@ -29,13 +29,13 @@ export default function GrantPage() {
               {grantContent.bullets.map((bullet) => (
                 <div
                   key={bullet}
-                  className="rounded-[22px] border border-[var(--line)] bg-[var(--panel)] px-5 py-5 text-lg leading-8 text-[var(--muted)]"
+                  className="rounded-[22px] border border-[var(--line)] bg-[var(--panel)] px-5 py-5 text-lg leading-8 text-[var(--muted-foreground)]"
                 >
                   {bullet}
                 </div>
               ))}
             </div>
-            <p className="mt-8 text-lg leading-8 text-[var(--muted)]">
+            <p className="mt-8 text-lg leading-8 text-[var(--muted-foreground)]">
               The best next step is to submit your project request. That gives
               us enough context to understand what you are trying to accomplish,
               where things currently stand, and whether grant-assisted support

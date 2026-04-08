@@ -52,7 +52,7 @@ export default async function ContactPage({
               Let&apos;s talk through the mission, the constraints, and what
               would actually help.
             </h1>
-            <p className="mt-7 max-w-[980px] text-[clamp(1.2rem,2.1vw,1.9rem)] leading-[1.65] text-[var(--muted)]">
+            <p className="mt-7 max-w-[980px] text-[clamp(1.2rem,2.1vw,1.9rem)] leading-[1.65] text-[var(--muted-foreground)]">
               If you are a nonprofit, church, or faith-based organization and
               want clearer digital support, please reach out to us to discuss
               how we might help.

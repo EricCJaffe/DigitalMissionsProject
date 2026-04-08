@@ -25,7 +25,7 @@ export function PageHero({
           <h1 className="mt-5 text-4xl font-semibold tracking-[-0.06em] text-[var(--navy)] sm:text-5xl lg:text-6xl">
             {title}
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)] sm:text-xl">
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted-foreground)] sm:text-xl">
             {description}
           </p>
         </div>
