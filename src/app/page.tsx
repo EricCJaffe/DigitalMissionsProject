@@ -32,9 +32,9 @@ const accentBg = (accent: string) =>
 
 export default function Home() {
   return (
-    <main>
+    <main className="flex flex-col gap-6 px-4 pb-20 pt-6 sm:px-6 lg:px-8">
       {/* ─── HERO ──────────────────────────────────────────────────── */}
-      <section className="relative flex min-h-[94vh] items-center overflow-hidden bg-[#07122a]">
+      <section className="relative flex min-h-[90vh] items-center overflow-hidden rounded-[36px] bg-[#07122a]">
         {/* Community photo */}
         <div className="absolute inset-0">
           <Image
@@ -137,7 +137,7 @@ export default function Home() {
       </section>
 
       {/* ─── POSTURE ───────────────────────────────────────────────── */}
-      <section className="bg-[#0c1d3f] py-24">
+      <section className="overflow-hidden rounded-[36px] bg-[#0c1d3f] py-24">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -233,7 +233,7 @@ export default function Home() {
       </section>
 
       {/* ─── WHO WE SERVE ──────────────────────────────────────────── */}
-      <section className="bg-[#f4f8ff] py-24">
+      <section className="overflow-hidden rounded-[36px] bg-[#f4f8ff] py-24">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -332,7 +332,7 @@ export default function Home() {
       </section>
 
       {/* ─── PROCESS (DOT-GRID NETWORK) ────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#0c1d3f] py-24">
+      <section className="relative overflow-hidden rounded-[36px] bg-[#0c1d3f] py-24">
         {/* Dot grid */}
         <svg
           className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.055]"
@@ -429,7 +429,7 @@ export default function Home() {
       </section>
 
       {/* ─── SERVICES ──────────────────────────────────────────────── */}
-      <section className="bg-white py-24">
+      <section className="overflow-hidden rounded-[36px] bg-white py-24">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.25fr]">
             <motion.div
@@ -538,7 +538,7 @@ export default function Home() {
       </section>
 
       {/* ─── GRANTS CTA ────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#07122a] py-28">
+      <section className="relative overflow-hidden rounded-[36px] bg-[#07122a] py-28">
         <BackgroundBeams className="opacity-35" />
         <div className="pointer-events-none absolute left-1/2 top-1/2 h-[480px] w-[480px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--blue)]/12 blur-[110px]" />
 
