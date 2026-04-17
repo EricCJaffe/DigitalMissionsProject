@@ -7,6 +7,7 @@ import {
   useMotionValue,
   useSpring,
   useTransform,
+  useMotionTemplate,
   useScroll,
   type MotionValue,
 } from "motion/react";
@@ -122,15 +123,13 @@ export default function Home() {
   const mouseY = useMotionValue(0.5);
   const spotX = useSpring(mouseX, { stiffness: 120, damping: 22 });
   const spotY = useSpring(mouseY, { stiffness: 120, damping: 22 });
-  const orb1X = useTransform(spotX, [0, 1], [-40, 40]);
-  const orb1Y = useTransform(spotY, [0, 1], [-30, 30]);
-  const orb2X = useTransform(spotX, [0, 1], [30, -30]);
-  const orb2Y = useTransform(spotY, [0, 1], [20, -20]);
-  const spotlight = useTransform(
-    [spotX, spotY] as unknown as MotionValue<number>[],
-    ([mx, my]: number[]) =>
-      `radial-gradient(600px circle at ${mx * 100}% ${my * 100}%, rgba(46,98,230,0.18), transparent 55%)`,
-  );
+  const orb1X = useTransform(spotX, [0, 1], [-60, 60]);
+  const orb1Y = useTransform(spotY, [0, 1], [-40, 40]);
+  const orb2X = useTransform(spotX, [0, 1], [50, -50]);
+  const orb2Y = useTransform(spotY, [0, 1], [30, -30]);
+  const spotPctX = useTransform(spotX, (v) => v * 100);
+  const spotPctY = useTransform(spotY, (v) => v * 100);
+  const spotlight = useMotionTemplate`radial-gradient(600px circle at ${spotPctX}% ${spotPctY}%, rgba(46,98,230,0.22), transparent 55%)`;
 
   const { scrollYProgress } = useScroll();
   const heroShift = useParallax(scrollYProgress, -120);
@@ -168,14 +167,42 @@ export default function Home() {
           style={{ background: spotlight }}
         />
 
-        {/* Drifting ambient orbs */}
+        {/* Drifting ambient orbs with idle float + mouse reactivity */}
         <motion.div
           style={{ x: orb1X, y: orb1Y }}
-          className="pointer-events-none absolute left-1/4 top-1/3 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--blue)]/12 blur-[130px]"
-        />
+          className="pointer-events-none absolute left-1/4 top-1/3 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2"
+        >
+          <motion.div
+            className="h-full w-full rounded-full bg-[var(--blue)]/20 blur-[130px]"
+            animate={{
+              scale: [1, 1.15, 1],
+              opacity: [0.7, 1, 0.7],
+            }}
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </motion.div>
         <motion.div
           style={{ x: orb2X, y: orb2Y }}
-          className="pointer-events-none absolute bottom-0 right-1/3 h-[380px] w-[380px] rounded-full bg-[var(--teal)]/10 blur-[110px]"
+          className="pointer-events-none absolute bottom-0 right-1/3 h-[380px] w-[380px]"
+        >
+          <motion.div
+            className="h-full w-full rounded-full bg-[var(--teal)]/18 blur-[110px]"
+            animate={{
+              scale: [1, 1.25, 1],
+              opacity: [0.6, 0.9, 0.6],
+            }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+          />
+        </motion.div>
+        {/* Third roaming orb */}
+        <motion.div
+          aria-hidden
+          className="pointer-events-none absolute right-[12%] top-[18%] h-[260px] w-[260px] rounded-full bg-[#6a8cff]/15 blur-[100px]"
+          animate={{
+            x: [0, 40, -30, 0],
+            y: [0, -30, 20, 0],
+          }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
         />
 
         {/* Subtle grid overlay */}
@@ -321,9 +348,22 @@ export default function Home() {
               <motion.div
                 key={industry.slug}
                 initial={{ opacity: 0, x: 28 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.6 + i * 0.12, duration: 0.7, ease: EASE }}
-                whileHover={{ x: -4 }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                  y: [0, -4, 0],
+                }}
+                transition={{
+                  opacity: { delay: 0.6 + i * 0.12, duration: 0.7, ease: EASE },
+                  x: { delay: 0.6 + i * 0.12, duration: 0.7, ease: EASE },
+                  y: {
+                    delay: 1.2 + i * 0.3,
+                    duration: 4.5 + i * 0.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  },
+                }}
+                whileHover={{ x: -6, scale: 1.02 }}
               >
                 <Link
                   href={`/industries/${industry.slug}`}
