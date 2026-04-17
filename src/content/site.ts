@@ -233,3 +233,123 @@ export const grantContent = {
     "The first step is to submit your project so we can understand the need, the current state of your ministry or organization, and whether we may be able to help",
   ],
 };
+
+// TODO: replace placeholder metrics with real numbers when available.
+export const homeStats: { value: number; suffix?: string; label: string }[] = [
+  { value: 24, suffix: "+", label: "Ministries and nonprofits supported" },
+  { value: 1200, suffix: "+", label: "Hours of admin work automated away" },
+  { value: 98, suffix: "%", label: "Projects delivered on or under budget" },
+  { value: 40, suffix: "k+", label: "Community members reached through builds" },
+];
+
+// TODO: replace placeholder quotes with real testimonials when collected.
+export const homeTestimonials = [
+  {
+    quote:
+      "They actually listened before proposing anything. By week three we had a volunteer intake system that cut our follow-up time in half.",
+    name: "Placeholder — Church Operations Lead",
+    title: "Mid-size congregation, Midwest",
+  },
+  {
+    quote:
+      "We had quotes that were three times higher. Their work was lean, well documented, and our team can actually maintain it without hand-holding.",
+    name: "Placeholder — Executive Director",
+    title: "Community food nonprofit",
+  },
+  {
+    quote:
+      "The AI workshop paid for itself in the first week. Our comms lead is now drafting newsletters in a fraction of the time.",
+    name: "Placeholder — Communications Director",
+    title: "Regional faith-based nonprofit",
+  },
+  {
+    quote:
+      "They treated our budget like it was their own. Zero pressure to buy tools we did not need.",
+    name: "Placeholder — Pastor",
+    title: "Multi-site church",
+  },
+  {
+    quote:
+      "Our donor follow-ups used to get lost. Now they happen automatically with the right tone — like we wrote them ourselves.",
+    name: "Placeholder — Development Lead",
+    title: "Youth-focused nonprofit",
+  },
+];
+
+export const homeImpact: {
+  tag: string;
+  title: string;
+  blurb: string;
+  metric?: string;
+  accent: "blue" | "teal" | "dark";
+  span: "wide" | "tall" | "default";
+}[] = [
+  {
+    tag: "Automation",
+    title: "Volunteer intake pipeline",
+    blurb:
+      "Replaced a 6-step manual intake with a single form, auto-routed by role and availability.",
+    metric: "~12 staff hours/week reclaimed",
+    accent: "blue",
+    span: "wide",
+  },
+  {
+    tag: "Website",
+    title: "Multi-site church rebuild",
+    blurb:
+      "Unified four campus sites into one system with clear next-step pathways for first-time visitors.",
+    metric: "3.2× first-time visitor conversions",
+    accent: "teal",
+    span: "tall",
+  },
+  {
+    tag: "AI Training",
+    title: "Staff workshop series",
+    blurb:
+      "A four-week program giving a nonprofit communications team practical AI habits.",
+    metric: "60% faster newsletter turnaround",
+    accent: "dark",
+    span: "default",
+  },
+  {
+    tag: "Internal Tool",
+    title: "Grant-tracking dashboard",
+    blurb:
+      "A lightweight internal tool replacing five spreadsheets across two departments.",
+    metric: "Deadlines never missed since launch",
+    accent: "blue",
+    span: "default",
+  },
+  {
+    tag: "Donor Flow",
+    title: "Automated giving follow-up",
+    blurb:
+      "Pastoral-voice sequences triggered by first-time gifts, recurring starts, and lapsed donors.",
+    metric: "2× repeat giving rate",
+    accent: "teal",
+    span: "wide",
+  },
+];
+
+export const homeFaq: { q: string; a: string }[] = [
+  {
+    q: "How much does a typical project cost?",
+    a: "It depends on scope, but most ministry and nonprofit projects land in the low-to-mid four figures — and sometimes lower for qualifying organizations through partner or grant support. We always share an honest, fixed estimate up front.",
+  },
+  {
+    q: "How long does a project usually take?",
+    a: "Small automations and focused builds often ship in 2–4 weeks. Larger custom sites or multi-phase rollouts typically run 6–10 weeks. We optimize for shipping something useful early, then iterating.",
+  },
+  {
+    q: "Do you only work with religious organizations?",
+    a: "No — we partner with nonprofits, churches, and faith-based businesses. The common thread is mission-driven work where budget stewardship matters.",
+  },
+  {
+    q: "What if we are not sure what we need?",
+    a: "That is the most common starting point. The first conversation is free and focused on clarifying priorities. If we are not the right fit, we will say so and point you somewhere better.",
+  },
+  {
+    q: "Can you help us qualify for grant or discounted support?",
+    a: "Possibly. A portion of our service revenue, along with partner support, lets us offer significantly reduced rates — and occasionally free help — to qualifying churches and nonprofits. Submit a project and we will review together.",
+  },
+];

@@ -4,16 +4,28 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   motion,
+  AnimatePresence,
   useMotionValue,
   useSpring,
   useTransform,
   useMotionTemplate,
   useScroll,
+  useInView,
+  animate,
   type MotionValue,
 } from "motion/react";
-import { useRef } from "react";
-import { industries, processSteps, services } from "@/content/site";
+import { useEffect, useRef, useState } from "react";
+import {
+  industries,
+  processSteps,
+  services,
+  homeStats,
+  homeTestimonials,
+  homeImpact,
+  homeFaq,
+} from "@/content/site";
 import { BackgroundBeams } from "@/components/ui/background-beams";
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -109,6 +121,119 @@ function TiltCard({
 
 function useParallax(value: MotionValue<number>, distance: number) {
   return useTransform(value, [0, 1], [0, distance]);
+}
+
+function Counter({
+  to,
+  suffix = "",
+  duration = 1.8,
+}: {
+  to: number;
+  suffix?: string;
+  duration?: number;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [display, setDisplay] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return;
+    const controls = animate(0, to, {
+      duration,
+      ease: EASE,
+      onUpdate: (v) => setDisplay(v),
+    });
+    return () => controls.stop();
+  }, [inView, to, duration]);
+
+  const formatted =
+    to >= 1000 ? Math.round(display).toLocaleString() : Math.round(display).toString();
+
+  return (
+    <span ref={ref} className="tabular-nums">
+      {formatted}
+      {suffix}
+    </span>
+  );
+}
+
+function RotatingWord({ words, interval = 2200 }: { words: string[]; interval?: number }) {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setIndex((i) => (i + 1) % words.length), interval);
+    return () => clearInterval(id);
+  }, [words.length, interval]);
+
+  return (
+    <span className="relative inline-flex h-[1.2em] items-baseline overflow-hidden align-bottom">
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span
+          key={words[index]}
+          initial={{ y: "100%", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: "-100%", opacity: 0 }}
+          transition={{ duration: 0.5, ease: EASE }}
+          className="inline-block whitespace-nowrap bg-gradient-to-r from-[var(--teal)] via-[#4fc4b4] to-[var(--blue)] bg-clip-text font-serif italic text-transparent"
+          style={{ fontFamily: "var(--font-serif)" }}
+        >
+          {words[index]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  );
+}
+
+function FaqItem({ q, a, i }: { q: string; a: string; i: number }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ delay: i * 0.06, duration: 0.5, ease: EASE }}
+      className={
+        "overflow-hidden rounded-[22px] border transition-colors " +
+        (open
+          ? "border-[var(--line-strong)] bg-white shadow-[0_12px_40px_rgba(15,42,102,0.08)]"
+          : "border-[var(--line)] bg-[var(--panel)] hover:border-[var(--line-strong)]")
+      }
+    >
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+        aria-expanded={open}
+      >
+        <span className="text-base font-semibold text-[var(--navy)] sm:text-lg">{q}</span>
+        <motion.span
+          animate={{ rotate: open ? 45 : 0 }}
+          transition={{ duration: 0.3, ease: EASE }}
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--blue)]/10 text-[var(--blue)]"
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path
+              d="M7 1v12M1 7h12"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+            />
+          </svg>
+        </motion.span>
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: EASE }}
+          >
+            <p className="px-6 pb-6 text-base leading-7 text-slate-600">{a}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
 }
 
 const accentColor = (accent: string) =>
@@ -263,8 +388,11 @@ export default function Home() {
               animate="visible"
               className="mt-6 max-w-xl text-lg leading-8 text-white/60"
             >
-              We partner with nonprofits, churches, and faith-based businesses to
-              build with more clarity and less waste — without bloated agency
+              We partner with{" "}
+              <RotatingWord
+                words={["nonprofits", "churches", "faith-based businesses", "ministries"]}
+              />{" "}
+              to build with more clarity and less waste — without bloated agency
               pricing or business-first language.
             </motion.p>
 
@@ -331,6 +459,29 @@ export default function Home() {
                   </span>
                 ),
               )}
+            </motion.div>
+
+            {/* Mobile-only industry chips (desktop shows the right-column cards instead) */}
+            <motion.div
+              variants={fadeUp}
+              custom={9}
+              initial="hidden"
+              animate="visible"
+              className="mt-10 -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 lg:hidden [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {industries.map((industry) => (
+                <Link
+                  key={industry.slug}
+                  href={`/industries/${industry.slug}`}
+                  className="snap-start shrink-0 rounded-2xl border border-white/10 bg-white/[0.05] p-4 backdrop-blur-md transition active:scale-95"
+                  style={{ minWidth: "240px" }}
+                >
+                  <p className="text-sm font-semibold text-white">{industry.name}</p>
+                  <p className="mt-1 line-clamp-2 text-xs leading-5 text-white/55">
+                    {industry.description}
+                  </p>
+                </Link>
+              ))}
             </motion.div>
           </motion.div>
 
@@ -417,6 +568,35 @@ export default function Home() {
             />
           </div>
         </motion.div>
+      </section>
+
+      {/* ─── STATS (impact numbers) ────────────────────────────────── */}
+      <section className="overflow-hidden rounded-[36px] border border-[var(--line)] bg-white py-10 sm:py-12">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={stagger}
+            className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 sm:divide-x sm:divide-[var(--line)]"
+          >
+            {homeStats.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                variants={fadeUp}
+                custom={i}
+                className="px-0 text-center sm:px-6"
+              >
+                <p className="bg-gradient-to-br from-[var(--navy)] via-[var(--blue)] to-[var(--teal)] bg-clip-text text-4xl font-semibold tracking-[-0.035em] text-transparent sm:text-5xl">
+                  <Counter to={stat.value} suffix={stat.suffix} />
+                </p>
+                <p className="mt-2 text-xs font-medium leading-5 text-slate-500 sm:text-sm">
+                  {stat.label}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </section>
 
       {/* ─── POSTURE ───────────────────────────────────────────────── */}
@@ -627,6 +807,148 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── IMPACT / WHAT WE'VE BUILT (BENTO) ─────────────────────── */}
+      <section className="overflow-hidden rounded-[36px] bg-[#f4f8ff] py-24">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={stagger}
+            className="mb-14 flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end"
+          >
+            <div>
+              <motion.p
+                variants={fadeUp}
+                className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--blue)]"
+              >
+                What we&apos;ve built
+              </motion.p>
+              <motion.h2
+                variants={fadeUp}
+                custom={1}
+                className="mt-4 max-w-2xl text-4xl font-semibold tracking-[-0.02em] text-[var(--navy)] sm:text-5xl"
+              >
+                Concrete work, not{" "}
+                <span className="bg-gradient-to-r from-[var(--blue)] to-[var(--teal)] bg-clip-text font-serif italic text-transparent" style={{ fontFamily: "var(--font-serif)" }}>
+                  abstractions
+                </span>
+                .
+              </motion.h2>
+            </div>
+            <motion.p
+              variants={fadeUp}
+              custom={2}
+              className="max-w-sm text-base leading-7 text-slate-500"
+            >
+              Representative examples from recent work with ministries and nonprofits. Outcomes
+              based on self-reported improvements after launch.
+            </motion.p>
+          </motion.div>
+
+          <div className="grid gap-5 md:grid-cols-4 md:grid-rows-2">
+            {homeImpact.map((item, i) => {
+              const color = accentColor(item.accent);
+              const bg = accentBg(item.accent);
+              const spanClass =
+                item.span === "wide"
+                  ? "md:col-span-2"
+                  : item.span === "tall"
+                  ? "md:col-span-2 md:row-span-2"
+                  : "md:col-span-1";
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ delay: i * 0.08, duration: 0.6, ease: EASE }}
+                  whileHover={{ y: -4 }}
+                  className={
+                    "group relative flex flex-col justify-between overflow-hidden rounded-[26px] border border-[var(--line)] bg-white p-7 shadow-[0_14px_36px_rgba(15,42,102,0.06)] transition-shadow hover:shadow-[0_22px_54px_rgba(15,42,102,0.12)] " +
+                    spanClass
+                  }
+                >
+                  {/* Accent glow on hover */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute -right-16 -top-16 h-60 w-60 rounded-full opacity-0 blur-[80px] transition-opacity duration-500 group-hover:opacity-100"
+                    style={{ background: color }}
+                  />
+                  {/* Dotted pattern */}
+                  <svg
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.04]"
+                  >
+                    <defs>
+                      <pattern
+                        id={`impact-${i}`}
+                        x="0"
+                        y="0"
+                        width="22"
+                        height="22"
+                        patternUnits="userSpaceOnUse"
+                      >
+                        <circle cx="1" cy="1" r="1" fill={color} />
+                      </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill={`url(#impact-${i})`} />
+                  </svg>
+
+                  <div className="relative">
+                    <span
+                      className="inline-flex rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em]"
+                      style={{ background: bg, color }}
+                    >
+                      {item.tag}
+                    </span>
+                    <h3 className="mt-5 text-xl font-semibold tracking-[-0.015em] text-[var(--navy)] sm:text-2xl">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-slate-500 sm:text-base sm:leading-7">
+                      {item.blurb}
+                    </p>
+                  </div>
+
+                  {item.metric && (
+                    <div className="relative mt-6 flex items-center gap-3 border-t border-[var(--line)] pt-4">
+                      <span
+                        aria-hidden
+                        className="flex h-7 w-7 items-center justify-center rounded-full"
+                        style={{ background: bg }}
+                      >
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                          <path
+                            d="M2 9l3-3 2 2 3-5"
+                            stroke={color}
+                            strokeWidth="1.7"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M8 2h3v3"
+                            stroke={color}
+                            strokeWidth="1.7"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </span>
+                      <span
+                        className="text-sm font-semibold tracking-[-0.01em]"
+                        style={{ color }}
+                      >
+                        {item.metric}
+                      </span>
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* ─── PROCESS (DOT-GRID NETWORK) ────────────────────────────── */}
       <section className="relative overflow-hidden rounded-[36px] bg-[#0c1d3f] py-24">
         {/* Dot grid */}
@@ -673,7 +995,36 @@ export default function Home() {
           </motion.div>
 
           <div className="relative grid gap-6 lg:grid-cols-4">
-            {/* Animated drawn-in connecting line */}
+            {/* Mobile vertical connector (drawn-in on scroll) */}
+            <svg
+              aria-hidden
+              className="pointer-events-none absolute left-[36px] top-6 bottom-6 w-[2px] lg:hidden"
+              viewBox="0 0 1 100"
+              preserveAspectRatio="none"
+            >
+              <defs>
+                <linearGradient id="process-line-v" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stopColor="rgba(255,255,255,0)" />
+                  <stop offset="15%" stopColor="rgba(46,98,230,0.5)" />
+                  <stop offset="85%" stopColor="rgba(25,153,138,0.5)" />
+                  <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+                </linearGradient>
+              </defs>
+              <motion.line
+                x1="0.5"
+                x2="0.5"
+                y1="0"
+                y2="100"
+                stroke="url(#process-line-v)"
+                strokeWidth="1"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 1.6, ease: EASE }}
+              />
+            </svg>
+
+            {/* Animated drawn-in connecting line (desktop) */}
             <svg
               aria-hidden
               className="pointer-events-none absolute left-0 right-0 top-[44px] hidden h-[2px] w-full lg:block"
@@ -765,15 +1116,37 @@ export default function Home() {
               viewport={{ once: true, margin: "-80px" }}
               variants={stagger}
             >
+              {/* Decorative image with duotone treatment */}
+              <motion.div
+                variants={fadeUp}
+                className="relative mb-8 aspect-[5/4] overflow-hidden rounded-[24px] border border-[var(--line)]"
+              >
+                <Image
+                  src="/images/service-collaboration.png"
+                  alt="Team collaborating"
+                  fill
+                  className="object-cover"
+                />
+                {/* Duotone overlay using brand colors */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--navy)]/35 via-transparent to-[var(--teal)]/25 mix-blend-multiply" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy)]/70 via-transparent to-transparent" />
+                {/* Float chip */}
+                <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-md">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--teal)]" />
+                  In practice
+                </div>
+              </motion.div>
+
               <motion.p
                 variants={fadeUp}
+                custom={1}
                 className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--blue)]"
               >
                 Services
               </motion.p>
               <motion.h2
                 variants={fadeUp}
-                custom={1}
+                custom={2}
                 className="mt-4 font-semibold text-4xl tracking-[-0.02em] text-[var(--navy)] sm:text-5xl"
               >
                 Practical digital work for
@@ -781,18 +1154,36 @@ export default function Home() {
               </motion.h2>
               <motion.p
                 variants={fadeUp}
-                custom={2}
+                custom={3}
                 className="mt-5 text-lg leading-8 text-slate-500"
               >
                 We focus on helping organizations achieve their vision without
                 gimmicks, unnecessary cost, or overcomplicated tools.
               </motion.p>
-              <motion.div variants={fadeUp} custom={3} className="mt-8">
+              <motion.div variants={fadeUp} custom={4} className="mt-8">
                 <Link
                   href="/services/workflow-automation"
-                  className="inline-flex h-12 items-center justify-center rounded-full bg-[var(--navy)] px-6 text-sm font-semibold text-white transition hover:-translate-y-0.5"
+                  className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full bg-[var(--navy)] px-6 text-sm font-semibold text-white transition hover:-translate-y-0.5"
                 >
-                  View All Services
+                  <span className="relative z-10 flex items-center gap-2">
+                    View All Services
+                    <svg
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                    >
+                      <path
+                        d="M2.5 7h9M7.5 3l4 4-4 4"
+                        stroke="currentColor"
+                        strokeWidth="1.7"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
                 </Link>
               </motion.div>
             </motion.div>
@@ -864,6 +1255,105 @@ export default function Home() {
                 </motion.div>
               ))}
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── TESTIMONIALS ──────────────────────────────────────────── */}
+      <section className="relative overflow-hidden rounded-[36px] bg-gradient-to-br from-[#0c1d3f] via-[#0b1b3a] to-[#07122a] py-24">
+        {/* Soft orbs */}
+        <div className="pointer-events-none absolute -left-20 top-0 h-[360px] w-[360px] rounded-full bg-[var(--blue)]/15 blur-[120px]" />
+        <div className="pointer-events-none absolute -right-20 bottom-0 h-[320px] w-[320px] rounded-full bg-[var(--teal)]/12 blur-[110px]" />
+
+        <div className="relative z-10 mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={stagger}
+            className="mb-14 max-w-3xl text-center mx-auto"
+          >
+            <motion.p
+              variants={fadeUp}
+              className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--teal)]"
+            >
+              Partner voices
+            </motion.p>
+            <motion.h2
+              variants={fadeUp}
+              custom={1}
+              className="mt-4 text-4xl font-semibold tracking-[-0.02em] text-white sm:text-5xl"
+            >
+              Teams we&apos;ve worked alongside.
+            </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              custom={2}
+              className="mt-5 text-base leading-7 text-white/55 sm:text-lg sm:leading-8"
+            >
+              Anonymized quotes from ministry and nonprofit leaders. We&apos;re happy to connect
+              you with active partners on request.
+            </motion.p>
+          </motion.div>
+        </div>
+
+        <div className="relative z-10 dark mx-auto">
+          <InfiniteMovingCards
+            items={homeTestimonials}
+            direction="left"
+            speed="slow"
+            pauseOnHover
+            className="mx-auto"
+          />
+        </div>
+      </section>
+
+      {/* ─── FAQ ──────────────────────────────────────────────────── */}
+      <section className="overflow-hidden rounded-[36px] bg-white py-24">
+        <div className="mx-auto max-w-[1100px] px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={stagger}
+            className="mb-12 grid gap-8 lg:grid-cols-[1fr_1.4fr] lg:items-end"
+          >
+            <div>
+              <motion.p
+                variants={fadeUp}
+                className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--blue)]"
+              >
+                Common questions
+              </motion.p>
+              <motion.h2
+                variants={fadeUp}
+                custom={1}
+                className="mt-4 text-4xl font-semibold tracking-[-0.02em] text-[var(--navy)] sm:text-5xl"
+              >
+                Practical answers,{" "}
+                <span
+                  className="bg-gradient-to-r from-[var(--blue)] to-[var(--teal)] bg-clip-text font-serif italic text-transparent"
+                  style={{ fontFamily: "var(--font-serif)" }}
+                >
+                  up front
+                </span>
+                .
+              </motion.h2>
+            </div>
+            <motion.p
+              variants={fadeUp}
+              custom={2}
+              className="text-base leading-7 text-slate-500 sm:text-lg sm:leading-8"
+            >
+              The things every organization asks us in their first call. If yours isn&apos;t
+              here, just submit a project and we&apos;ll get into it.
+            </motion.p>
+          </motion.div>
+
+          <div className="flex flex-col gap-3">
+            {homeFaq.map((item, i) => (
+              <FaqItem key={item.q} q={item.q} a={item.a} i={i} />
+            ))}
           </div>
         </div>
       </section>
